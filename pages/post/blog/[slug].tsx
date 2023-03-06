@@ -4,6 +4,8 @@ import md from "markdown-it";
 
 export async function getStaticPaths() {
     const files = fs.readdirSync("posts/blog");
+    console.log(files);
+    
     const paths = files.map((fileName) => ({
         params: {
             slug: fileName.replace(".md", ""),
