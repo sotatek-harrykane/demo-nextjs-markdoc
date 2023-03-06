@@ -133,7 +133,6 @@ const Test = () => {
             const response = await fetch("/api/create-blog", {
                 method: "POST",
                 body: value,
-                headers: { 'Content-Type': 'application/json' },
             });
             return response.json();
         };
