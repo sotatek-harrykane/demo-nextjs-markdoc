@@ -39,6 +39,7 @@ const nextConfig = {
     appDir: true,
   },
   pageExtensions: ["tsx", "jsx", "js", "ts", "md", "mdoc"],
+  env: {  NEXT_PUBLIC_KEY: process.env.NEXT_PUBLIC_KEY  } 
 };
 
 module.exports = merge(removeImports, withMarkdoc())(nextConfig);
