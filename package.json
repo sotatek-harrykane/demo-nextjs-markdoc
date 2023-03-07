@@ -20,6 +20,7 @@
     "gray-matter": "^4.0.3",
     "lodash": "^4.17.21",
     "markdown-it": "^13.0.1",
+    "mkdirp": "^2.1.5",
     "moment": "^2.29.4",
     "next": "13.2.3",
     "next-compose-plugins": "^2.2.1",
