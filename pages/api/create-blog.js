@@ -11,7 +11,7 @@ export default async function handler(req, res) {
             .trim();
         const category = frontmatter.category.toLowerCase();
         try {
-            fs.accessSync(`posts/${category}/${title}.md`, fs.constants.W_OK);
+            fs.accessSync(`posts/${category}/${title}.md`, fs.constants.R_OK);
             console.log("can write %s", path);
             // fs.writeFileSync(`posts/${category}/${title}.md`, req.body);
             return res.status(200).json({ message: "Create Successfully!" });
