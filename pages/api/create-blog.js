@@ -10,14 +10,27 @@ export default async function handler(req, res) {
             .toLowerCase()
             .trim();
         const category = frontmatter.category.toLowerCase();
-        try {
-            fs.accessSync(`posts/blog/helllooo.md`, fs.constants.R_OK);
-            console.log("can write %s", path);
-            // fs.writeFileSync(`posts/${category}/${title}.md`, req.body);
-            return res.status(200).json({ message: "Create Successfully!" });
-        } catch (err) {
-            console.error(err);
-            return res.status(400).json({ message: "Create Error!" });
-        }
+        // try {
+        fs.writeFile(
+            `posts/${category}/${title}.md`,
+            req.body,
+            {
+                encoding: "utf8",
+                flag: "w",
+                mode: 0o666,
+            },
+            (err) => {
+                if (err) {
+                    console.log(err);
+                    return res.status(400).json({ message: "Create Error!" });
+                } else {
+                    return res.status(200).json({ message: "Create Successfully!" });
+                }
+            }
+        );
+        // fs.writeFileSync(`posts/${category}/${title}.md`, req.body);
+        // } catch (err) {
+        //     console.error(err);
+        // }
     }
 }
