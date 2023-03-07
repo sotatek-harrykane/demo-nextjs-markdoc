@@ -29,17 +29,16 @@
 
 // module.exports = NextConfig;
 
-
 const removeImports = require("next-remove-imports")();
 const withMarkdoc = require("@markdoc/next.js");
 const { merge } = require("lodash");
 
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
-  pageExtensions: ["tsx", "jsx", "js", "ts", "md", "mdoc"],
-  env: {  NEXT_PUBLIC_KEY: process.env.NEXT_PUBLIC_KEY  } 
+    experimental: {
+        appDir: true,
+    },
+    pageExtensions: ["tsx", "jsx", "js", "ts", "md", "mdoc"],
+    output: "standalone",
 };
 
 module.exports = merge(removeImports, withMarkdoc())(nextConfig);
