@@ -1,6 +1,5 @@
 import fs from "fs";
 import matter from "gray-matter";
-import mkdirp from "mkdirp";
 
 export default async function handler(req, res) {
     if (req.method === "POST" && req.url === '/api/create-blog') {
@@ -8,7 +7,6 @@ export default async function handler(req, res) {
         const title = frontmatter.title.replace(/[^\w\s]/gi, "").replace(/\s+/g, "-").toLowerCase().trim();
         const category = frontmatter.category.toLowerCase();
         try {
-            await mkdirp(`posts/${category}/${title}.md`);
             fs.writeFileSync(`posts/${category}/${title}.md`, req.body);
             return res.status(200).json({ message: "Create Successfully!" });
         } catch (err) {
